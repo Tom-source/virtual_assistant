@@ -1,0 +1,12 @@
+# Exclude environment variables
+.env
+
+# Exclude Python cache directories
+__pycache__/
+*.pyc
+
+# Exclude any other files or folders you don't want to push
+# For example, log files or virtual environments:
+venv/
+*.log
+

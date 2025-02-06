@@ -1,0 +1,5 @@
+Flask==2.2.2
+python-dotenv==1.0.0
+elevenlabs==1.50.7
+gunicorn==20.1.0
+

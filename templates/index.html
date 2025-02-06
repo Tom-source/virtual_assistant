@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voice Cloning & AI Innovation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Overall Page Styling */
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #121212;
+      color: #E0E0E0;
+      overflow-x: hidden;
+    }
+    
+    /* Hero Section with Background Image & Overlay */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(18, 18, 18, 0.7); /* Dark overlay for contrast */
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+      max-width: 800px;
+    }
+    .hero-title {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #ffffff;
+      opacity: 0;
+      animation: slideIn 1.5s forwards;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hero-subtitle {
+      font-size: 1.5em;
+      line-height: 1.6;
+      color: #cccccc;
+      overflow: hidden; /* Ensures text doesn't overflow during animation */
+      white-space: nowrap;
+      border-right: 3px solid #E0E0E0;
+      width: 0;
+      animation: typewriter 4s steps(40) forwards, blink 0.75s step-end infinite;
+      margin: 0 auto;
+    }
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #E0E0E0; }
+    }
+    
+    /* Content Section (if needed) */
+    .content {
+      padding: 20px;
+      text-align: center;
+      background: #181818;
+    }
+    
+    /* Floating Widget Container: No border, background, or shadow */
+    .widget-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      height: 420px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      z-index: 1000;
+    }
+    
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .hero-title {
+        font-size: 2em;
+      }
+      .hero-subtitle {
+        font-size: 1.2em;
+      }
+      .widget-container {
+        width: 90%;
+        height: 300px;
+        left: 5%;
+        right: 5%;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Do you want your own personal assistant?</h1>
+      <p class="hero-subtitle">See here the possibilities...</p>
+    </div>
+  </div>
+  
+  <!-- Optional Additional Content Section -->
+  <div class="content">
+    <!-- You can add extra information or links here if desired -->
+  </div>
+  
+  <!-- Floating Widget Container (no ugly box) -->
+  <div class="widget-container">
+    <elevenlabs-convai agent-id="zf4PNoAkcIOdlAbkbJBO"></elevenlabs-convai>
+  </div>
+  
+  <!-- Load the ElevenLabs widget script asynchronously -->
+  <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+</body>
+</html>
