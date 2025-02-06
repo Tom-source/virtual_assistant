@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Voice Cloning & AI Innovation</title>
+  <title>Voice Cloning &amp; AI Innovation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for a modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    /* Reset defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     /* Overall Page Styling */
     body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #121212;
       color: #E0E0E0;
       overflow-x: hidden;
+      line-height: 1.6;
     }
     
     /* Hero Section with Background Image & Overlay */
@@ -62,7 +71,7 @@
       font-size: 1.5em;
       line-height: 1.6;
       color: #cccccc;
-      overflow: hidden; /* Ensures text doesn't overflow during animation */
+      overflow: hidden; /* Prevent overflow during animation */
       white-space: nowrap;
       border-right: 3px solid #E0E0E0;
       width: 0;
@@ -78,14 +87,41 @@
       50% { border-color: #E0E0E0; }
     }
     
-    /* Content Section (if needed) */
+    /* Instructions Section */
+    .instructions {
+      padding: 40px 20px;
+      background: #1e1e1e;
+      text-align: center;
+    }
+    .instructions h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .instructions p {
+      font-size: 1em;
+      color: #bbbbbb;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Additional Content Section (Optional) */
     .content {
       padding: 20px;
       text-align: center;
       background: #181818;
     }
     
-    /* Floating Widget Container: No border, background, or shadow */
+    /* Disclaimer Section */
+    .disclaimer {
+      padding: 10px 20px;
+      background: #0d0d0d;
+      font-size: 0.8em;
+      text-align: center;
+      color: #888888;
+    }
+    
+    /* Floating Widget Container: no border, background, or shadow */
     .widget-container {
       position: fixed;
       bottom: 20px;
@@ -96,6 +132,59 @@
       border: none;
       box-shadow: none;
       z-index: 1000;
+    }
+    
+    /* Fun Extra: Floating Fun Fact Button */
+    .fun-fact-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff4081;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+    }
+    .fun-fact-btn:hover {
+      background: #e73370;
+    }
+    
+    /* Fun Fact Modal Styling */
+    #funFactModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 8px;
+      z-index: 1002;
+      max-width: 80%;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    #funFactModal p {
+      color: #E0E0E0;
+      font-size: 1.1em;
+      margin-bottom: 15px;
+    }
+    #funFactModal button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      background: #ff4081;
+      color: #fff;
+      cursor: pointer;
     }
     
     /* Responsive adjustments */
@@ -113,6 +202,11 @@
         right: 5%;
         bottom: 10px;
       }
+      .fun-fact-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
@@ -121,21 +215,48 @@
   <div class="hero">
     <div class="hero-content">
       <h1 class="hero-title">Do you want your own personal assistant?</h1>
-      <p class="hero-subtitle">See here the possibilities...</p>
+      <p class="hero-subtitle">Call me with the widget in the right corner...</p>
     </div>
   </div>
   
-  <!-- Optional Additional Content Section -->
-  <div class="content">
-    <!-- You can add extra information or links here if desired -->
-  </div>
+  <!-- Instructions Section -->
+<section class="instructions"> 
+  <h2>Instructions</h2>
+  <ul class="instructions-list">
+    <li>The audio will automatically stop after 1 minute.</li>
+    <li>Try to speak clearly for better recognition.</li>
+    <li>You can ask about technology, AI, or general knowledge.</li>
+    <li>Responses are generated in real-time using advanced AI.</li>
+  </ul>
+</section>
+  
+  <!-- Disclaimer Section -->
+  <footer class="disclaimer">
+    <p>Disclaimer: The statements made by this virtual assistant demo are for demonstration purposes only and cannot be used against the speaker.</p>
+  </footer>
   
   <!-- Floating Widget Container (no ugly box) -->
   <div class="widget-container">
     <elevenlabs-convai agent-id="zf4PNoAkcIOdlAbkbJBO"></elevenlabs-convai>
   </div>
   
+  <!-- Fun Fact Button -->
+  <button class="fun-fact-btn" title="Did you know?">?</button>
+  
+  <!-- Fun Fact Modal (hidden by default) -->
+  <div id="funFactModal">
+    <p>Fun Fact: Voice cloning technology is evolving rapidly, enabling more natural and interactive experiences!</p>
+    <button onclick="document.getElementById('funFactModal').style.display='none'">Close</button>
+  </div>
+  
   <!-- Load the ElevenLabs widget script asynchronously -->
   <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+  
+  <!-- JavaScript for Fun Fact Modal -->
+  <script>
+    document.querySelector('.fun-fact-btn').addEventListener('click', function() {
+      document.getElementById('funFactModal').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
