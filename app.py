@@ -4,7 +4,6 @@ from flask import Flask, render_template, jsonify
 from dotenv import load_dotenv
 from elevenlabs.client import ElevenLabs
 from elevenlabs.conversational_ai.conversation import Conversation, ConversationConfig
-from elevenlabs.conversational_ai.default_audio_interface import DefaultAudioInterface
 
 # Load environment variables from .env
 load_dotenv()
@@ -31,7 +30,7 @@ conversation = Conversation(
     client,
     agent_id,
     requires_auth=True,  # Authentication is required if an API key is provided.
-    audio_interface=DefaultAudioInterface(),
+    audio_interface = None,
     callback_agent_response=lambda response: logging.info(f"Agent: {response}"),
     callback_agent_response_correction=lambda original, corrected: logging.info(f"Agent: {original} -> {corrected}"),
     callback_user_transcript=lambda transcript: logging.info(f"User: {transcript}")
